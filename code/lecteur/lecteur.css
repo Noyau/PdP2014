@@ -1,0 +1,57 @@
+.clear { clear:both; }
+
+div#lecteur {
+
+}
+
+/* Video */
+section#video {
+	float:left;
+	width:640px;
+}
+
+section#video video {
+	width:640px;
+	height:480px;
+}
+
+section#video div#progression {
+	width:640px;
+	height:16px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	background-color:#525252;
+}
+
+section#video div#progression div#curseur {
+	width:1px;
+	height:16px;
+	background-color:#ff0ff0;
+}
+
+/* Lecteur */
+section#etiquettes {
+	float:right;
+}
+
+section#etiquettes table {
+
+}
+
+section#etiquettes table tr {
+
+}
+
+section#etiquettes table tr.lienEtiquette:hover {
+	color:#50f0ff;
+	cursor:pointer;
+}
+
+section#etiquettes table tr th {
+
+}
+
+section#etiquettes table tr td {
+
+}
