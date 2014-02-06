@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <title>Gobelin</title>
     <link rel="stylesheet" media="screen" type="text/css" href="lecteur.css">
+    <script src="../../lib/sprintf.js/src/sprintf.min.js" type="text/javascript"></script>
     <script src="lecteur.js" type="text/javascript"></script>
     <script src="parser.js"  type="text/javascript"></script>
   </head>
-  <body onload="ajouterIndex(analyserDocument(ouvrirDocument('trolldance.xml')), 'div#lecteur section#etiquettes table');">
+  <body onload="initLecteur(); initIndex('trolldance.xml');">
+    <div id="debug" style="hidden:true;"></div>
     <div id="lecteur">
       <section id="etiquettes">
 	<table>
@@ -16,33 +18,7 @@
 	    <th>Fin</th>
 	    <th>Commentaire</th>
 	  </tr>
-	  <!--
-	  <tr class="lienEtiquette" onclick="allerA(5);">
-	    <td>00:00.5</td>
-	    <td>00:00.10</td>
-	    <td>Lol ?</td>
-	  </tr>
-	  <tr class="lienEtiquette" onclick="allerA(50);">
-	    <td>00:00.50</td>
-	    <td>00:01.10</td>
-	    <td>Double Lol !</td>
-	  </tr>
-	  <tr class="lienEtiquette" onclick="allerA(110);">
-	    <td>00:01.50</td>
-	    <td>00:01.55</td>
-	    <td>Triple Lol !!</td>
-	  </tr>
-	  <tr class="lienEtiquette" onclick="allerA(120);">
-	    <td>00:02.00</td>
-	    <td>00:02.03</td>
-	    <td>Quadra Lol !!!</td>
-	  </tr>
-	  <tr class="lienEtiquette" onclick="allerA(125);">
-	    <td>00:02.05</td>
-	    <td>00:02.07</td>
-	    <td>Penta Lol !!!!</td>
-	  </tr>
-	  -->
+	  <!-- ici les index a generer -->
 	</table>
       </section>
       <section id="video">
@@ -53,8 +29,8 @@
 		Votre navigateur ne supporte pas la balise "video".
 	</video>
 	<div id="commandes">
-	  <button id="restart" onclick="commandeRestart();">[]</button>
-	  <button id="play" onclick="commandePlay();">&gt;</button>
+	  <button id="restart" onclick="lectVideo.restart();">[]</button>
+	  <button id="play" onclick="lectVideo.play();">&gt;</button>
 	  <div id="temps"></div>
 	</div>
 	<div id="progression">

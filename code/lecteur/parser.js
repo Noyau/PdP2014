@@ -74,24 +74,51 @@ function ajouterIndex(index, selecteurHTML)
 {
     var balise = document.querySelector(selecteurHTML);
     var tr, tdDepart, tdFin, tdObserv;
-    var i;
+    var i, htemps, mtemps, stemps;
     for(i = 0; i < index.length; ++i) 
     {
+	htemps = parseInt(index[i].depart / 3600);
+	mtemps = parseInt(index[i].depart / 60);
+	stemps = parseInt(index[i].depart % 60);
+
 	tdDepart = document.createElement('td');
-	tdDepart.innerHTML = index[i].depart;
+	tdDepart.innerHTML = sprintf("%02d:%02d.%02d", htemps, mtemps, stemps);
+
+	htemps = parseInt(index[i].fin / 3600);
+	mtemps = parseInt(index[i].fin / 60);
+	stemps = parseInt(index[i].fin % 60);
 	
 	tdFin = document.createElement('td');
-	tdFin.innerHTML = index[i].fin;
+	tdFin.innerHTML = sprintf("%02d:%02d.%02d", htemps, mtemps, stemps);
 
 	tdObserv = document.createElement('td');
 	tdObserv.innerHTML = index[i].observation;
 
 	tr = document.createElement('tr');
 	tr.setAttribute('class', 'lienEtiquette');
-	tr.setAttribute('onclick', 'allerA('+index[i].depart+')');
+	tr.setAttribute('onclick', 'lectVideo.allerA('+index[i].depart+')');
 	tr.appendChild(tdDepart);
 	tr.appendChild(tdFin);
 	tr.appendChild(tdObserv);
 	balise.appendChild(tr);
     }
+}
+
+/**
+ * Variable globale permettant de selectionner la balise contenant les index.
+ */
+var selecteurBaliseIndex = "div#lecteur section#etiquettes table";
+
+/**
+ * Ouvre, lit, analyse le fichier passe en parametre et initialise la balise des index avec les informations tirees.
+ * @parma {String} fichier Le lien vers le fichier a analyser.
+ */
+function initIndex(fichier)
+{
+    ajouterIndex(
+	analyserDocument(
+	    ouvrirDocument(fichier)
+	),
+	selecteurBaliseIndex
+    );
 }
