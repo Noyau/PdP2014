@@ -5,6 +5,10 @@ class Home extends Controller {
     parent::__construct(strtolower(get_class($this)));
   }
 
+  public function __destruct() {
+    parent::__destruct();
+  }
+
   public function index() {
     $var = array();
     $var['page'] = array();

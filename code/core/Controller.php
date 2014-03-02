@@ -4,9 +4,13 @@ class Controller {
   private $vars;
   private $layout;
 
-  public function Controller($layout=null) {
+  public function __construct($layout=null) {
     $this->vars   = array();
     $this->layout = $layout;
+  }
+
+  public function __destruct() {
+    
   }
 
   public function setVar($v) {

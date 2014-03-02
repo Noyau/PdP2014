@@ -1,5 +1,5 @@
 <?php
-class VideoPlayer extends Controller {
+class Videoplayer extends Controller {
 
   public function __construct() {
     parent::__construct(strtolower(get_class($this)));
